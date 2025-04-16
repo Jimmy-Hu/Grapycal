@@ -40,7 +40,7 @@ If you have any questions or ideas to share, feel free to join the [Discord serv
 
 Grapycal is still in its early stage. Any contribution is welcome! Currently, most of our efforts are on the backend (the core of Grapycal) and extensions (nodes with various functionalities), but it's also helpful to improve the frontend and the documentation.
 
-For developing frontend, [node.js tool](https://nodejs.org/en/download) should be installed, therefore, we can use `npm` command. Next, [`TypeScript` tool](https://www.typescriptlang.org/download/) is needed and it can be installed with command `npm install -g typescript`. Next, go to `frontend` folder and run `tsc --build` command.
+For developing frontend, [node.js tool](https://nodejs.org/en/download) should be installed, therefore, we can use `npm` command. Next, [`TypeScript` tool](https://www.typescriptlang.org/download/) is needed and it can be installed with command `npm install -g typescript`. Next, when frontend code is modified, go to **`/backend`** folder and run `pre_bump.bat`. Finally, go to project folder `/` and run `pip install -e backend -e extensions\grapycal_builtin` command and the modification takes effect. Please notice that `pre_bump.bat` will run **automatically** after you run `cz bump` command in `/backend` folder.
 
 To contribute, please refer to the [Contribution Guide](https://wiki.grapycal.org/index.php?title=Contribution) to get started. The [Project Board](https://github.com/orgs/Grapycal/projects/2) contains the current plans for Grapycal and is a good place to start.
 
