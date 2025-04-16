@@ -1,16 +1,17 @@
 [tool.poetry]
 name = "grapycal"
-version = "0.11.3"
+version = "0.12.0"
 description = "A highly interactive visual programming language"
 authors = [
     "eri24816 <a931eric@gmail.com>",
     "secminhr <secminhrian@gmail.com>",
     "peterxcli <peterxcli@gmail.com>",
     "greenslime1024 <greenslime1024@gmail.com>",
+    "Jimmy-Hu <s103360021@gmail.com>"
 ]
 
 maintainers = [
-    "eri24816 <a931eric@gmail.com>",
+    "Jimmy-Hu <s103360021@gmail.com>",
 ]
 
 license = "BSD-3-Clause"

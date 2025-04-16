@@ -28,7 +28,7 @@ export const soundManager = new SoundManager();
 
 function tryReconnect(): void{
     if(Workspace.instance != null)
-        Workspace.instance.appNotif.add('Connection to server lost. Reconnecting...',4000)
+        Workspace.instance.appNotif.add('Connection to server lost. Reconnecting...test',4000)
     fetch(`http://${location.hostname}:8765`, {
         method: "GET",
         signal: AbortSignal.timeout(2000),

@@ -54,8 +54,10 @@ class GrapycalApp:
         if not self._config["no_http"]:
             webpage_path = os.path.join(os.path.dirname(__file__), "webpage")
             print(
-                f'Strating webpage server at localhost:{self._config["http_port"]} from {webpage_path}...'
+                f'Strating webpage server at localhost:{self._config["http_port"]} from {webpage_path} test...'
             )
+            if not (os.path.isdir(webpage_path)):
+                os.makedirs(webpage_path)
             http_server = subprocess.Popen(
                 [sys.executable, "-m", "http.server", str(self._config["http_port"])],
                 start_new_session=True,

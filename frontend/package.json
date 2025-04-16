@@ -1,10 +1,10 @@
 {
   "name": "grapycal-client",
-  "version": "0.11.3",
+  "version": "0.12.0",
   "main": "app.ts",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@web/dev-server": "^0.1.35",
+    "@web/dev-server": "^0.4.6",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
