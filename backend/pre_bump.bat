@@ -1,4 +1,5 @@
 :: Build and update frontend code
+:: Run this when frontend code is modified.
 cd ../frontend
 CALL npm run build:standalone
 cd ..
