@@ -129,3 +129,29 @@ class DivisionNode(FunctionNode):
                 denominator *= d
         return nominator/denominator
                 
+#   PowerNode class implementation
+class PowerNode(FunctionNode):
+    '''
+    Calculates sum(`B`) ** sum(`A`).
+    
+    :inputs:
+       - A: A set of values, `A`
+       - B: A set of values, `B`
+    
+    :outputs:
+        -  Power: sum(`A`) ** sum(`B`)
+    '''
+    category = 'function/math'
+    inputs = ['a', 'b']
+    max_in_degree = [None, None]
+    outputs = ['a**b']
+    display_port_names = False
+
+    def build_node(self):
+        super().build_node()
+        self.label.set('**')
+        self.label_offset.set(-.09)
+        self.shape.set('round')
+
+    def calculate(self, a,b):
+        return sum(a) ** sum(b)
