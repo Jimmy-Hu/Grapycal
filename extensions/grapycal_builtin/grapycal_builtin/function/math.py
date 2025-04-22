@@ -155,3 +155,31 @@ class PowerNode(FunctionNode):
 
     def calculate(self, a,b):
         return sum(a) ** sum(b)
+    
+#   MaxNode class implementation
+class MaxNode(FunctionNode):
+    '''
+    Calculates max(sum(`B`), sum(`A`)).
+    
+    :inputs:
+       - A: A set of values, `A`
+       - B: A set of values, `B`
+    
+    :outputs:
+        -  Power: max(sum(`A`), sum(`B`))
+    '''
+    category = 'function/math'
+    inputs = ['a', 'b']
+    max_in_degree = [None, None]
+    outputs = ['max(a, b)']
+    display_port_names = False
+
+    def build_node(self):
+        super().build_node()
+        self.label.set('max')
+        self.label_offset.set(-.09)
+        
+        self.shape.set('round')
+
+    def calculate(self, a, b):
+        return max(sum(a), sum(b))
