@@ -183,3 +183,5 @@ class MaxNode(FunctionNode):
 
     def calculate(self, a, b):
         return max(sum(a), sum(b))
+    
+#   MinNode class implementation
