@@ -185,3 +185,5 @@ class MaxNode(FunctionNode):
         return max(sum(a), sum(b))
     
 #   MinNode class implementation
+class MinNode(FunctionNode):
+    
