@@ -186,4 +186,5 @@ class MaxNode(FunctionNode):
     
 #   MinNode class implementation
 class MinNode(FunctionNode):
+    '''
     
