@@ -187,4 +187,4 @@ class MaxNode(FunctionNode):
 #   MinNode class implementation
 class MinNode(FunctionNode):
     '''
-    
+    Calculates min(sum(`B`), sum(`A`)).
