@@ -188,3 +188,8 @@ class MaxNode(FunctionNode):
 class MinNode(FunctionNode):
     '''
     Calculates min(sum(`B`), sum(`A`)).
+
+    :inputs:
+       - A: A set of values, `A`
+       - B: A set of values, `
+       
