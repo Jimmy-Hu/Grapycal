@@ -192,4 +192,5 @@ class MinNode(FunctionNode):
     :inputs:
        - A: A set of values, `A`
        - B: A set of values, `
-       
+    
+    :outputs:
