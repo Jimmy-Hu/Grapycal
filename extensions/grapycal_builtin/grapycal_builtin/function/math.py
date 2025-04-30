@@ -194,3 +194,4 @@ class MinNode(FunctionNode):
        - B: A set of values, `
     
     :outputs:
+        -  Power: min(sum(`A`), sum(`B`))
