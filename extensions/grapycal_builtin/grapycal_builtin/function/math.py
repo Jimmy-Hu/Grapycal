@@ -195,3 +195,4 @@ class MinNode(FunctionNode):
     
     :outputs:
         -  Power: min(sum(`A`), sum(`B`))
+    '''
