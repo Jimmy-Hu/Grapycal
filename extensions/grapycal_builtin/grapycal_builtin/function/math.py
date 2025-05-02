@@ -196,3 +196,4 @@ class MinNode(FunctionNode):
     :outputs:
         -  Power: min(sum(`A`), sum(`B`))
     '''
+    category = 'function/math'
