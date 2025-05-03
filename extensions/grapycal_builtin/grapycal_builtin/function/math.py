@@ -197,3 +197,4 @@ class MinNode(FunctionNode):
         -  Power: min(sum(`A`), sum(`B`))
     '''
     category = 'function/math'
+    inputs = ['a', 'b']
