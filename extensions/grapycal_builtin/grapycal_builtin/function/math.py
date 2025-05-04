@@ -198,3 +198,4 @@ class MinNode(FunctionNode):
     '''
     category = 'function/math'
     inputs = ['a', 'b']
+    max_in_degree = [None, None]
