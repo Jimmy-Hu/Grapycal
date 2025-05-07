@@ -201,3 +201,4 @@ class MinNode(FunctionNode):
     max_in_degree = [None, None]
     outputs = ['min(a, b)']
     display_port_names = False
+
