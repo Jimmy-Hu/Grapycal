@@ -202,3 +202,4 @@ class MinNode(FunctionNode):
     outputs = ['min(a, b)']
     display_port_names = False
 
+    def build_node(self):
