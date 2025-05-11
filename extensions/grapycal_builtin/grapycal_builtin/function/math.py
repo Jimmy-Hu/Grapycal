@@ -203,3 +203,4 @@ class MinNode(FunctionNode):
     display_port_names = False
 
     def build_node(self):
+        super().build_node()
