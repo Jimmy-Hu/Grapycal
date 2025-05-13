@@ -205,3 +205,4 @@ class MinNode(FunctionNode):
     def build_node(self):
         super().build_node()
         self.label.set('min')
+        self.label_offset.set(-.09)
