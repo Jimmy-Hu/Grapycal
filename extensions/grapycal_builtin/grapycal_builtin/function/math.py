@@ -207,3 +207,4 @@ class MinNode(FunctionNode):
         self.label.set('min')
         self.label_offset.set(-.09)
         self.shape.set('round')
+
