@@ -209,3 +209,4 @@ class MinNode(FunctionNode):
         self.shape.set('round')
 
     def calculate(self, a, b):
+        return min(sum(a), sum(b))
