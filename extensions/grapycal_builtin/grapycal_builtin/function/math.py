@@ -210,3 +210,4 @@ class MinNode(FunctionNode):
 
     def calculate(self, a, b):
         return min(sum(a), sum(b))
+        
