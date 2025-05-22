@@ -1,4 +1,5 @@
 from grapycal.sobjects.functionNode import FunctionNode
+import math
 
 class AdditionNode(FunctionNode):
     '''
