@@ -213,4 +213,4 @@ class MinNode(FunctionNode):
         return min(sum(a), sum(b))
         
         
-class 
+class LogNode(FunctionNode):
