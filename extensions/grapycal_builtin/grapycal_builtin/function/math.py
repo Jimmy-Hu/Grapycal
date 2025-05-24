@@ -214,3 +214,4 @@ class MinNode(FunctionNode):
         
         
 class LogNode(FunctionNode):
+    '''
