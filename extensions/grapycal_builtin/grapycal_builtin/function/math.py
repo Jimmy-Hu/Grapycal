@@ -215,3 +215,4 @@ class MinNode(FunctionNode):
         
 class LogNode(FunctionNode):
     '''
+    Calculate log(sum(`A`))
