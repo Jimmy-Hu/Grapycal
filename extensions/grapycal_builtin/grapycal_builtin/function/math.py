@@ -218,3 +218,4 @@ class LogNode(FunctionNode):
     Calculate log(sum(`A`))
     '''
     category = 'function/math'
+    inputs = ['a']
