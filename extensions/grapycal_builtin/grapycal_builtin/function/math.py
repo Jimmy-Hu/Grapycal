@@ -222,3 +222,4 @@ class LogNode(FunctionNode):
     max_in_degree = [None]
     outputs = ['log(a)']
     display_port_names = False
+
