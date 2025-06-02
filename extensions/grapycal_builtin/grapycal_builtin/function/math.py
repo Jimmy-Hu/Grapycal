@@ -223,3 +223,4 @@ class LogNode(FunctionNode):
     outputs = ['log(a)']
     display_port_names = False
 
+    def build_node(self):
