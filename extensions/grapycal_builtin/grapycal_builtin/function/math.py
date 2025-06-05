@@ -226,3 +226,4 @@ class LogNode(FunctionNode):
     def build_node(self):
         super().build_node()
         self.label.set('log')
+        self.label_offset.set(-.09)
