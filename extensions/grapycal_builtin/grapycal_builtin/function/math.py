@@ -228,3 +228,4 @@ class LogNode(FunctionNode):
         self.label.set('log')
         self.label_offset.set(-.09)
         self.shape.set('round')
+
