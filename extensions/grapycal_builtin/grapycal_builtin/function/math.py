@@ -230,3 +230,4 @@ class LogNode(FunctionNode):
         self.shape.set('round')
 
     def calculate(self, a):
+        return math.log(sum(a))
