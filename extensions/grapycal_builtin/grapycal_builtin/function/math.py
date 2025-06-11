@@ -231,4 +231,5 @@ class LogNode(FunctionNode):
 
     def calculate(self, a):
         return math.log(sum(a))
-        
+
+class SinNode():
