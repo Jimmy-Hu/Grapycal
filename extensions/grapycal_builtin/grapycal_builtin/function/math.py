@@ -233,3 +233,6 @@ class LogNode(FunctionNode):
         return math.log(sum(a))
 
 class SinNode(FunctionNode):
+    '''
+    
+    '''
