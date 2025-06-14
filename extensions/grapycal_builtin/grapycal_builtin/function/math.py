@@ -234,5 +234,5 @@ class LogNode(FunctionNode):
 
 class SinNode(FunctionNode):
     '''
-    
+    Calculate sin(sum(`A`))
     '''
