@@ -236,3 +236,4 @@ class SinNode(FunctionNode):
     '''
     Calculate sin(sum(`A`))
     '''
+    category = 'function/math'
