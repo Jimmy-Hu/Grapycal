@@ -238,3 +238,4 @@ class SinNode(FunctionNode):
     '''
     category = 'function/math'
     inputs = ['a']
+    max_in_degree = [None]
