@@ -240,3 +240,4 @@ class SinNode(FunctionNode):
     inputs = ['a']
     max_in_degree = [None]
     outputs = ['sin(a)']
+    display_port_names = False
