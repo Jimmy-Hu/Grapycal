@@ -242,3 +242,4 @@ class SinNode(FunctionNode):
     outputs = ['sin(a)']
     display_port_names = False
 
+    def build_node(self):
