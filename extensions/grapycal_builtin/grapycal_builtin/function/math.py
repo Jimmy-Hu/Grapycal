@@ -244,3 +244,4 @@ class SinNode(FunctionNode):
 
     def build_node(self):
         super().build_node()
+        self.label.set('sin')
