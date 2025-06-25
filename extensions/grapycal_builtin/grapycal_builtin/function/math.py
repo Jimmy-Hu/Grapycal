@@ -246,3 +246,4 @@ class SinNode(FunctionNode):
         super().build_node()
         self.label.set('sin')
         self.label_offset.set(-.09)
+        self.shape.set('round')
