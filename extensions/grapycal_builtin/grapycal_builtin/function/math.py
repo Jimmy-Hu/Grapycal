@@ -250,3 +250,4 @@ class SinNode(FunctionNode):
 
     def calculate(self, a):
         return math.sin(sum(a))
+
