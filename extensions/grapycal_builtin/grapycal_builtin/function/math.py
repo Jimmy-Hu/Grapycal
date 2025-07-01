@@ -252,3 +252,4 @@ class SinNode(FunctionNode):
         return math.sin(sum(a))
 
 class CosNode(FunctionNode):
+    '''
