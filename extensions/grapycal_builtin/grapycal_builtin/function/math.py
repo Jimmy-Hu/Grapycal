@@ -253,3 +253,4 @@ class SinNode(FunctionNode):
 
 class CosNode(FunctionNode):
     '''
+    Calculate cos(sum(`A`))
