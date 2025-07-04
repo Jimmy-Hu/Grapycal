@@ -255,3 +255,4 @@ class CosNode(FunctionNode):
     '''
     Calculate cos(sum(`A`))
     '''
+    category = 'function/math'
