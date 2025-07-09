@@ -259,3 +259,5 @@ class CosNode(FunctionNode):
     inputs = ['a']
     max_in_degree = [None]
     outputs = ['cos(a)']
+    display_port_names = False
+    
