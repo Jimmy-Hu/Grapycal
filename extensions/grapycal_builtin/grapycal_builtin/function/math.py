@@ -261,3 +261,4 @@ class CosNode(FunctionNode):
     outputs = ['cos(a)']
     display_port_names = False
     
+    def build_node(self):
