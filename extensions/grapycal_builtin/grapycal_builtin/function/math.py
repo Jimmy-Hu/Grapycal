@@ -265,3 +265,4 @@ class CosNode(FunctionNode):
         super().build_node()
         self.label.set('cos')
 
+
