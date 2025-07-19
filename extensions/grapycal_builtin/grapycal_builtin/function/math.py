@@ -266,5 +266,6 @@ class CosNode(FunctionNode):
         self.label.set('cos')
 
     def calculate(self, a):
+        return math.cos(sum(a))
 
 
