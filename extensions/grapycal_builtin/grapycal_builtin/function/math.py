@@ -269,4 +269,5 @@ class CosNode(FunctionNode):
         return math.cos(sum(a))
 
 class TanNode(FunctionNode):
+    '''
 
