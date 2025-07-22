@@ -270,4 +270,5 @@ class CosNode(FunctionNode):
 
 class TanNode(FunctionNode):
     '''
+    Calculate tan(sum(`A`))
 
