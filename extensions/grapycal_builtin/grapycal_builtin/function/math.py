@@ -273,4 +273,5 @@ class TanNode(FunctionNode):
     Calculate tan(sum(`A`))
     '''
     category = 'function/math'
+    inputs = ['a']
 
