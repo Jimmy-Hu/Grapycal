@@ -276,4 +276,5 @@ class TanNode(FunctionNode):
     inputs = ['a']
     max_in_degree = [None]
     outputs = ['tan(a)']
+    display_port_names = False
 
