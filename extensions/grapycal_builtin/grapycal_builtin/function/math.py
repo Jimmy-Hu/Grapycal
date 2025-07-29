@@ -278,3 +278,4 @@ class TanNode(FunctionNode):
     outputs = ['tan(a)']
     display_port_names = False
 
+    def build_node(self):
