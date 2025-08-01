@@ -281,3 +281,4 @@ class TanNode(FunctionNode):
     def build_node(self):
         super().build_node()
         self.label.set('tan')
+        self.label_offset.set(-.09)
