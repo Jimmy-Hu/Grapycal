@@ -282,3 +282,4 @@ class TanNode(FunctionNode):
         super().build_node()
         self.label.set('tan')
         self.label_offset.set(-.09)
+        self.shape.set('round')
