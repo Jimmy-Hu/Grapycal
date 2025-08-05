@@ -285,3 +285,4 @@ class TanNode(FunctionNode):
         self.shape.set('round')
 
     def calculate(self, a):
+        return math.tan(sum(a))
