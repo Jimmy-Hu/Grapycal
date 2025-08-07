@@ -287,3 +287,4 @@ class TanNode(FunctionNode):
     def calculate(self, a):
         return math.tan(sum(a))
 
+class AbsNode(FunctionNode):
