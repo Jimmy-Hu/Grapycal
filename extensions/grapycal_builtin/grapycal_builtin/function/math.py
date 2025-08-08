@@ -288,3 +288,4 @@ class TanNode(FunctionNode):
         return math.tan(sum(a))
 
 class AbsNode(FunctionNode):
+    '''
