@@ -290,3 +290,4 @@ class TanNode(FunctionNode):
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
+    '''
