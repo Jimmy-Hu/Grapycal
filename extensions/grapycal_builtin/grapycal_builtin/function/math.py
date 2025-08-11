@@ -291,3 +291,4 @@ class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
     '''
+    category = 'function/math'
