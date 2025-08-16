@@ -296,3 +296,4 @@ class AbsNode(FunctionNode):
     max_in_degree = [None]
     outputs = ['abs(a)']
     display_port_names = False
+
