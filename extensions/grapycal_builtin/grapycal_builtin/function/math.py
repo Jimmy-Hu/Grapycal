@@ -297,3 +297,4 @@ class AbsNode(FunctionNode):
     outputs = ['abs(a)']
     display_port_names = False
 
+    def build_node(self):
