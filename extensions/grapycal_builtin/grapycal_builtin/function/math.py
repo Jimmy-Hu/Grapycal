@@ -303,3 +303,4 @@ class AbsNode(FunctionNode):
         self.label_offset.set(-.09)
         self.shape.set('round')
 
+    def calculate(self, a):
