@@ -304,3 +304,4 @@ class AbsNode(FunctionNode):
         self.shape.set('round')
 
     def calculate(self, a):
+        return abs(sum(a))
