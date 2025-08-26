@@ -288,6 +288,7 @@ class TanNode(FunctionNode):
         return math.tan(sum(a))
 
 class CotNode(FunctionNode):
+    '''
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
