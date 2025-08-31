@@ -292,6 +292,7 @@ class CotNode(FunctionNode):
     Calculate 1 / tan(sum(`A`))
     '''
     category = 'function/math'
+    inputs = ['a']
 
 class AbsNode(FunctionNode):
     '''
