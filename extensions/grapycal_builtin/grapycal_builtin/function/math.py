@@ -294,6 +294,7 @@ class CotNode(FunctionNode):
     category = 'function/math'
     inputs = ['a']
     max_in_degree = [None]
+    outputs = ['cot(a)']
 
 class AbsNode(FunctionNode):
     '''
