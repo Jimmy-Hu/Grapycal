@@ -295,6 +295,7 @@ class CotNode(FunctionNode):
     inputs = ['a']
     max_in_degree = [None]
     outputs = ['cot(a)']
+    display_port_names = False
 
 class AbsNode(FunctionNode):
     '''
