@@ -299,6 +299,7 @@ class CotNode(FunctionNode):
 
     def build_node(self):
         super().build_node()
+        self.label.set('cot')
 
 class AbsNode(FunctionNode):
     '''
