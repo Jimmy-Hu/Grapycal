@@ -301,6 +301,7 @@ class CotNode(FunctionNode):
         super().build_node()
         self.label.set('cot')
         self.label_offset.set(-.09)
+        self.shape.set('round')
 
 class AbsNode(FunctionNode):
     '''
