@@ -304,6 +304,7 @@ class CotNode(FunctionNode):
         self.shape.set('round')
 
     def calculate(self, a):
+        return 1 / math.tan(sum(a))
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
