@@ -307,6 +307,7 @@ class CotNode(FunctionNode):
         return 1 / math.tan(sum(a))
 
 class SecNode(FunctionNode):
+    '''
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
