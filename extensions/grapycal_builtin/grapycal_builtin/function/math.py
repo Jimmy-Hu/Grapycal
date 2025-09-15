@@ -308,6 +308,7 @@ class CotNode(FunctionNode):
 
 class SecNode(FunctionNode):
     '''
+    Calculate 1 / cos(sum(`A`))
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
