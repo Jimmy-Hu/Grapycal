@@ -311,6 +311,7 @@ class SecNode(FunctionNode):
     Calculate 1 / cos(sum(`A`))
     '''
     category = 'function/math'
+    inputs = ['a']
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
