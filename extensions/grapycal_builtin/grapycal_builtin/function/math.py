@@ -313,6 +313,7 @@ class SecNode(FunctionNode):
     category = 'function/math'
     inputs = ['a']
     max_in_degree = [None]
+    outputs = ['sec(a)']
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
