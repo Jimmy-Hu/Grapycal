@@ -315,6 +315,7 @@ class SecNode(FunctionNode):
     max_in_degree = [None]
     outputs = ['sec(a)']
     display_port_names = False
+
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
