@@ -316,6 +316,7 @@ class SecNode(FunctionNode):
     outputs = ['sec(a)']
     display_port_names = False
 
+    def build_node(self):
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
