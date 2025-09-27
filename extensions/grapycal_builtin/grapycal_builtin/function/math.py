@@ -319,6 +319,7 @@ class SecNode(FunctionNode):
     def build_node(self):
         super().build_node()
         self.label.set('sec')
+        self.label_offset.set(-.09)
     
 class AbsNode(FunctionNode):
     '''
