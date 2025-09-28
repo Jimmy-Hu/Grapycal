@@ -321,6 +321,7 @@ class SecNode(FunctionNode):
         self.label.set('sec')
         self.label_offset.set(-.09)
     
+    def calculate(self, a):
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
