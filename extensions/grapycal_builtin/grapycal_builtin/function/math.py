@@ -324,6 +324,7 @@ class SecNode(FunctionNode):
     def calculate(self, a):
         return 1 / math.cos(sum(a))
     
+class CscNode(FunctionNode):
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
