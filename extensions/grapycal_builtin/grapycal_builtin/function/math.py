@@ -326,6 +326,7 @@ class SecNode(FunctionNode):
     
 class CscNode(FunctionNode):
     '''
+    Calculate 1 / sin(sum(`A`))
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
