@@ -329,6 +329,7 @@ class CscNode(FunctionNode):
     Calculate 1 / sin(sum(`A`))
     '''
     category = 'function/math'
+    inputs = ['a']
 
 class AbsNode(FunctionNode):
     '''
