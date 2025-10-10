@@ -331,6 +331,7 @@ class CscNode(FunctionNode):
     category = 'function/math'
     inputs = ['a']
     max_in_degree = [None]
+    outputs = ['csc(a)']
 
 class AbsNode(FunctionNode):
     '''
