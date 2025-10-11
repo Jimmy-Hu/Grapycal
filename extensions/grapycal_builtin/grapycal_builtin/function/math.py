@@ -332,6 +332,7 @@ class CscNode(FunctionNode):
     inputs = ['a']
     max_in_degree = [None]
     outputs = ['csc(a)']
+    display_port_names = False
 
 class AbsNode(FunctionNode):
     '''
