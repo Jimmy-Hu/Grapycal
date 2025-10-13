@@ -335,6 +335,7 @@ class CscNode(FunctionNode):
     display_port_names = False
 
     def build_node(self):
+        super().build_node()
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
