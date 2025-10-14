@@ -336,6 +336,7 @@ class CscNode(FunctionNode):
 
     def build_node(self):
         super().build_node()
+        self.label.set('csc')
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
