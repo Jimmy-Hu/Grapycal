@@ -339,6 +339,7 @@ class CscNode(FunctionNode):
         self.label.set('csc')
         self.label_offset.set(-.09)
 
+    def calculate(self, a):
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
