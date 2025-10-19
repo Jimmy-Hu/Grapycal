@@ -341,6 +341,7 @@ class CscNode(FunctionNode):
 
     def calculate(self, a):
         return 1 / math.sin(sum(a))
+
 class AbsNode(FunctionNode):
     '''
     Calculate abs(sum(`A`))
