@@ -27,4 +27,4 @@ jobs:
       run: |
         cd frontend
         npm install
-        npm run build
+        npm run build -- --config webpack.config.standalone.js
