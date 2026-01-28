@@ -40,4 +40,5 @@ jobs:
       run: |
         cd backend
         poetry install
+        poetry lock
         poetry run pytest
