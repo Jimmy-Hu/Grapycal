@@ -32,7 +32,8 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgl1-mesa-glx
+        # libgl1-mesa-glx is deprecated in newer Ubuntu versions, use libgl1 instead
+        sudo apt-get install -y libgl1
 
     # Step 4: Run tests using Poetry
     - name: Test
