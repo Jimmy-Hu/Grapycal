@@ -47,7 +47,8 @@ jobs:
         
         # Re-add 'furo' to ensure a single, valid version is used.
         # Explicitly add 'pyyaml' to ensure a version compatible with Python 3.12 (with wheels) is selected.
-        poetry add furo pyyaml
+        # Add 'setuptools' because the code depends on 'pkg_resources' which is part of setuptools.
+        poetry add furo pyyaml setuptools
         
         # Install all dependencies including development dependencies explicitly
         # This ensures pytest (which is in the dev group) is installed
