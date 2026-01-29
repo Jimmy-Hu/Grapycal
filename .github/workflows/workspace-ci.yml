@@ -38,9 +38,12 @@ jobs:
     - name: Test
       run: |
         cd backend
-        # Update dependencies (specifically PyYAML) to versions compatible with Python 3.12
-        # 'poetry update' refreshes the lock file with newer versions and installs them
-        poetry update
-        # Ensure the root project (backend) is installed
-        poetry install
+        # Remove poetry.lock to force resolving dependencies from scratch for Python 3.12
+        rm -f poetry.lock
+        
+        # Install all dependencies including development dependencies explicitly
+        # This ensures pytest (which is in the dev group) is installed
+        poetry install --with dev
+        
+        # Run pytest
         poetry run pytest
