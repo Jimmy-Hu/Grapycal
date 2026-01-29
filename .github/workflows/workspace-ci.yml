@@ -21,14 +21,13 @@ jobs:
         python-version: '3.12'
         cache: 'pip'
 
-    # Step 2: Install Poetry (which was previously in the Docker image)
+    # Step 2: Install Poetry
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-    # Step 3: Install system dependencies (e.g., for OpenCV or other extensions)
-    # If your tests require GUI libs or specific C++ tools, add them here
+    # Step 3: Install system dependencies
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -39,6 +38,7 @@ jobs:
     - name: Test
       run: |
         cd backend
-        poetry install
+        # Fix the lock file mismatch error by regenerating it
         poetry lock
+        poetry install
         poetry run pytest
