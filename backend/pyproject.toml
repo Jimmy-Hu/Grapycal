@@ -37,9 +37,6 @@ sphinx = "^7.1.2"
 furo = "^2023.9.10"
 ruff = "^0.1.6"
 
-[tool.poetry.scripts]
-grapycal = "grapycal.app:run"
-
 [tool.poetry.group.docs]
 optional = true
 
