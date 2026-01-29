@@ -38,7 +38,9 @@ jobs:
     - name: Test
       run: |
         cd backend
-        # Fix the lock file mismatch error by regenerating it
-        poetry lock
+        # Update dependencies (specifically PyYAML) to versions compatible with Python 3.12
+        # 'poetry update' refreshes the lock file with newer versions and installs them
+        poetry update
+        # Ensure the root project (backend) is installed
         poetry install
         poetry run pytest
