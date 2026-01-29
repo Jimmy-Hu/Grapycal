@@ -41,9 +41,13 @@ jobs:
         # Remove poetry.lock to force resolving dependencies from scratch for Python 3.12
         rm -f poetry.lock
         
-        # Fix incompatible constraints for 'furo' by explicitly updating it.
-        # This handles the conflict between overlapping version ranges in pyproject.toml.
-        poetry add furo@latest
+        # Remove lines containing 'furo' from pyproject.toml to resolve conflicting constraints
+        # occurring between different groups (e.g., docs vs dev).
+        sed -i '/furo/d' pyproject.toml
+        
+        # Re-add 'furo' to ensure a single, valid version is used.
+        # Explicitly add 'pyyaml' to ensure a version compatible with Python 3.12 (with wheels) is selected.
+        poetry add furo pyyaml
         
         # Install all dependencies including development dependencies explicitly
         # This ensures pytest (which is in the dev group) is installed
