@@ -52,10 +52,12 @@ jobs:
         # Add 'setuptools' because the code depends on 'pkg_resources'.
         poetry add furo pyyaml setuptools --no-interaction
         
-        # Install all dependencies including development dependencies explicitly.
-        # Use --no-interaction to prevent waiting for input.
-        # Use -v to provide verbose output in case it hangs again.
-        poetry install --with dev --no-interaction -v
+        # Install dependencies but SKIP installing the project root (--no-root).
+        # This prevents the CI from hanging on "Installing the current project".
+        poetry install --with dev --no-interaction --no-root -v
+        
+        # Add 'src' to PYTHONPATH so tests can import 'grapycal' package directly from source
+        export PYTHONPATH=$PYTHONPATH:$(pwd)/src
         
         # Run pytest
         poetry run pytest
