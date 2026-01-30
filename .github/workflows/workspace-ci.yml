@@ -48,13 +48,13 @@ jobs:
         # Remove lines containing 'furo' from pyproject.toml to resolve conflicting constraints
         sed -i '/furo/d' pyproject.toml
         
-        # Re-add 'furo' and 'pyyaml' for Python 3.12 compatibility.
-        # Add 'setuptools' because the code depends on 'pkg_resources'.
-        poetry add furo pyyaml setuptools --no-interaction
+        # Update pyproject.toml and lock file ONLY (--lock), do not install yet.
+        # This prevents partial installation states and multiple resolution steps.
+        poetry add --lock furo pyyaml setuptools --no-interaction
         
-        # Install dependencies but SKIP installing the project root (--no-root).
-        # This prevents the CI from hanging on "Installing the current project".
-        poetry install --with dev --no-interaction --no-root -v
+        # Install all dependencies (including dev) in a SINGLE pass.
+        # --no-root: Skips installing the project itself (avoids "Installing the current project" hang).
+        poetry install --with dev --no-interaction --no-root
         
         # Add 'src' to PYTHONPATH so tests can import 'grapycal' package directly from source
         export PYTHONPATH=$PYTHONPATH:$(pwd)/src
