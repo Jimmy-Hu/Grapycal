@@ -38,21 +38,24 @@ jobs:
     - name: Test
       run: |
         cd backend
+        
+        # Configure Poetry to disable system keyring access (common cause of CI hangs)
+        poetry config keyring.enabled false
+        
         # Remove poetry.lock to force resolving dependencies from scratch for Python 3.12
         rm -f poetry.lock
         
         # Remove lines containing 'furo' from pyproject.toml to resolve conflicting constraints
-        # occurring between different groups (e.g., docs vs dev).
         sed -i '/furo/d' pyproject.toml
         
-        # Re-add 'furo' to ensure a single, valid version is used.
-        # Explicitly add 'pyyaml' to ensure a version compatible with Python 3.12 (with wheels) is selected.
-        # Add 'setuptools' because the code depends on 'pkg_resources' which is part of setuptools.
-        poetry add furo pyyaml setuptools
+        # Re-add 'furo' and 'pyyaml' for Python 3.12 compatibility.
+        # Add 'setuptools' because the code depends on 'pkg_resources'.
+        poetry add furo pyyaml setuptools --no-interaction
         
-        # Install all dependencies including development dependencies explicitly
-        # This ensures pytest (which is in the dev group) is installed
-        poetry install --with dev
+        # Install all dependencies including development dependencies explicitly.
+        # Use --no-interaction to prevent waiting for input.
+        # Use -v to provide verbose output in case it hangs again.
+        poetry install --with dev --no-interaction -v
         
         # Run pytest
         poetry run pytest
