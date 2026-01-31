@@ -42,6 +42,10 @@ jobs:
         # Configure Poetry to disable system keyring access (common cause of CI hangs)
         poetry config keyring.enabled false
         
+        # Limit installer to 1 worker to prevent race conditions/deadlocks during installation
+        # This solves many "hanging" issues in CI environments.
+        poetry config installer.max-workers 1
+        
         # Remove poetry.lock to force resolving dependencies from scratch for Python 3.12
         rm -f poetry.lock
         
@@ -54,7 +58,8 @@ jobs:
         
         # Install all dependencies (including dev) in a SINGLE pass.
         # --no-root: Skips installing the project itself (avoids "Installing the current project" hang).
-        poetry install --with dev --no-interaction --no-root
+        # -v: Verbose output to show detailed installation progress (solving "show detailed info").
+        poetry install --with dev --no-interaction --no-root -v
         
         # Add 'src' to PYTHONPATH so tests can import 'grapycal' package directly from source
         export PYTHONPATH=$PYTHONPATH:$(pwd)/src
