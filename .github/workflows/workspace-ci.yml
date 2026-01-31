@@ -39,29 +39,32 @@ jobs:
       run: |
         cd backend
         
-        # Configure Poetry to disable system keyring access (common cause of CI hangs)
+        # Configure Poetry
         poetry config keyring.enabled false
-        
-        # Limit installer to 1 worker to prevent race conditions/deadlocks during installation
-        # This solves many "hanging" issues in CI environments.
         poetry config installer.max-workers 1
         
-        # Remove poetry.lock to force resolving dependencies from scratch for Python 3.12
+        # Reset environment
         rm -f poetry.lock
-        
-        # Remove lines containing 'furo' from pyproject.toml to resolve conflicting constraints
         sed -i '/furo/d' pyproject.toml
         
-        # Update pyproject.toml and lock file ONLY (--lock), do not install yet.
-        # This prevents partial installation states and multiple resolution steps.
+        # 1. Update lock file only
         poetry add --lock furo pyyaml setuptools --no-interaction
         
-        # Install all dependencies (including dev) in a SINGLE pass.
-        # --no-root: Skips installing the project itself (avoids "Installing the current project" hang).
-        # -v: Verbose output to show detailed installation progress (solving "show detailed info").
-        poetry install --with dev --no-interaction --no-root -v
+        # 2. Upgrade build tools inside the virtualenv
+        # Sometimes old pip/wheel versions cause hangs when installing binary packages
+        poetry run pip install --upgrade pip setuptools wheel
         
-        # Add 'src' to PYTHONPATH so tests can import 'grapycal' package directly from source
+        # 3. DEBUG & FIX HANG: Pre-install yarl using pip directly
+        # --only-binary :all: -> Forces failure if it tries to build from source (Answers "is it building from source?")
+        # -v -> specific verbose logging for this package
+        # This bypasses Poetry's installer for this problematic package.
+        poetry run pip install "yarl==1.22.0" --only-binary :all: -v
+        
+        # 4. Install remaining dependencies
+        # -vvv gives the maximum verbosity for Poetry
+        poetry install --with dev --no-interaction --no-root -vvv
+        
+        # Add 'src' to PYTHONPATH
         export PYTHONPATH=$PYTHONPATH:$(pwd)/src
         
         # Run pytest
