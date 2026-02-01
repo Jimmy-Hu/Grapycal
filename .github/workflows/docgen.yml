@@ -34,20 +34,31 @@ jobs:
         run: |
           cd backend
           
-          # Disable keyring to prevent hangs
+          # Configure Poetry to prevent hangs (same as workspace-ci)
           poetry config keyring.enabled false
+          poetry config installer.max-workers 1
           
-          # Fix lock file and dependency conflicts (same issue as workspace-ci)
+          # Fix lock file and dependency conflicts
           rm -f poetry.lock
           sed -i '/furo/d' pyproject.toml
           
-          # Re-add furo specifically for docs group
-          poetry add furo --group docs --no-interaction
+          # Update lock file
+          # We add 'setuptools' because grapycal code uses pkg_resources
+          # We add 'furo' to the docs group
+          poetry add --lock furo setuptools --group docs --no-interaction
+          
+          # Upgrade pip and pre-install yarl to prevent compile hangs (same as workspace-ci)
+          poetry run pip install --upgrade pip setuptools wheel
+          poetry run pip install "yarl==1.22.0" --only-binary :all: -v
           
           # Install dependencies
-          # --no-root is usually safer for CI, but Sphinx needs to import the package to autodoc it.
-          # If we use --no-root, we must set PYTHONPATH. Let's try installing root.
-          poetry install --only docs --no-interaction
+          # CHANGED: Use '--with docs' instead of '--only docs' to include MAIN dependencies.
+          # Sphinx needs main dependencies installed to import and inspect the package.
+          # Use --no-root and set PYTHONPATH to avoid "Installing current project" hangs.
+          poetry install --with docs --no-interaction --no-root -vv
+          
+          # Set PYTHONPATH so sphinx can find grapycal package source code
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/src
           
           # Generate documentation
           cd docs
