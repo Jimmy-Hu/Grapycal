@@ -12,21 +12,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: 3.12
           
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          # Required if grapycal imports opencv during documentation generation
+          sudo apt-get install -y libgl1
 
       - name: Install docs dependencies & Generate
         run: |
-          cd backend && poetry install --only docs
-          cd docs && poetry run make clean && poetry run make html
+          cd backend
+          
+          # Disable keyring to prevent hangs
+          poetry config keyring.enabled false
+          
+          # Fix lock file and dependency conflicts (same issue as workspace-ci)
+          rm -f poetry.lock
+          sed -i '/furo/d' pyproject.toml
+          
+          # Re-add furo specifically for docs group
+          poetry add furo --group docs --no-interaction
+          
+          # Install dependencies
+          # --no-root is usually safer for CI, but Sphinx needs to import the package to autodoc it.
+          # If we use --no-root, we must set PYTHONPATH. Let's try installing root.
+          poetry install --only docs --no-interaction
+          
+          # Generate documentation
+          cd docs
+          poetry run make clean
+          poetry run make html
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -35,4 +61,3 @@ jobs:
           publish_dir: backend/docs/build/html
           force_orphan: true
           cname: docs.grapycal.org
-      
