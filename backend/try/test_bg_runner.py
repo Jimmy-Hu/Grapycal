@@ -24,11 +24,11 @@ def count_to_ten_at_least_5():
 def app():
     print('app')
 
-    runner.add_task(count_to_ten)
+    runner.push(count_to_ten)
     time.sleep(3)
     runner.interrupt()
 
-    runner.add_task(count_to_ten_at_least_5)
+    runner.push(count_to_ten_at_least_5)
     time.sleep(3)
     runner.interrupt()
     time.sleep(3)
