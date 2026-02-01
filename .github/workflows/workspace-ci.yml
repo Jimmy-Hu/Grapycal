@@ -48,24 +48,26 @@ jobs:
         sed -i '/furo/d' pyproject.toml
         
         # 1. Update lock file only
+        echo "--- [DEBUG] Updating lock file ---"
         poetry add --lock furo pyyaml setuptools --no-interaction
         
         # 2. Upgrade build tools inside the virtualenv
-        # Sometimes old pip/wheel versions cause hangs when installing binary packages
+        echo "--- [DEBUG] Upgrading pip/setuptools ---"
         poetry run pip install --upgrade pip setuptools wheel
         
-        # 3. DEBUG & FIX HANG: Pre-install yarl using pip directly
-        # --only-binary :all: -> Forces failure if it tries to build from source (Answers "is it building from source?")
-        # -v -> specific verbose logging for this package
-        # This bypasses Poetry's installer for this problematic package.
+        # 3. Pre-install yarl
+        echo "--- [DEBUG] Pre-installing yarl ---"
         poetry run pip install "yarl==1.22.0" --only-binary :all: -v
         
         # 4. Install remaining dependencies
-        # -vvv gives the maximum verbosity for Poetry
+        echo "--- [DEBUG] Running poetry install ---"
         poetry install --with dev --no-interaction --no-root -vvv
         
         # Add 'src' to PYTHONPATH
         export PYTHONPATH=$PYTHONPATH:$(pwd)/src
         
         # Run pytest
-        poetry run pytest
+        echo "--- [DEBUG] Starting pytest ---"
+        # -vv: Verbose output (shows each test name)
+        # -s: Show stdout immediately (don't capture output) - helps identifying hangs
+        poetry run pytest -vv -s
