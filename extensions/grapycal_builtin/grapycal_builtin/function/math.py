@@ -360,3 +360,4 @@ class AbsNode(FunctionNode):
 
     def calculate(self, a):
         return abs(sum(a))
+        
