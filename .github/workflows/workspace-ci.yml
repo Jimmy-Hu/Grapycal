@@ -61,6 +61,10 @@ jobs:
         
         # 4. Install remaining dependencies
         echo "--- [DEBUG] Running poetry install ---"
+        poetry run pip install "pkg_resources>=2.0.0" --no-interaction --no-root -vvv
+        
+        # 4. Install remaining dependencies
+        echo "--- [DEBUG] Running poetry install ---"
         poetry install --with dev --no-interaction --no-root -vvv
         
         # Add 'src' to PYTHONPATH
