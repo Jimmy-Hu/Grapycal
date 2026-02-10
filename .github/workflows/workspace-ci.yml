@@ -61,7 +61,7 @@ jobs:
         
         # 4. Install remaining dependencies
         echo "--- [DEBUG] Running poetry install ---"
-        poetry run pip install "pkg_resources>=2.0.0" --no-interaction --no-root -vvv
+        poetry run pip install "pkg_resources>=2.0.0" -vvv
         
         # 4. Install remaining dependencies
         echo "--- [DEBUG] Running poetry install ---"
