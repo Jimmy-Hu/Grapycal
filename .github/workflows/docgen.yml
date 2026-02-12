@@ -1,74 +1,40 @@
-name: Generate document
-on: 
+name: Generate Documentation
+
+on:
   push:
     branches:
       - main
-    
-permissions:
-  contents: write
+    paths:
+      - 'backend/src/grapycal/**'
+      - 'backend/docs/**'
 
-jobs: 
-  generate:
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+    - name: Install Poetry
+      run: pip install poetry
+    - name: Install dependencies
+      run: |
+        cd backend
+        poetry config virtualenvs.create true
+        poetry config virtualenvs.in-project true
         
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-          
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          # Required if grapycal imports opencv during documentation generation
-          sudo apt-get install -y libgl1
-
-      - name: Install docs dependencies & Generate
-        run: |
-          cd backend
-          
-          # Configure Poetry to prevent hangs (same as workspace-ci)
-          poetry config keyring.enabled false
-          poetry config installer.max-workers 1
-          
-          # Fix lock file and dependency conflicts
-          rm -f poetry.lock
-          sed -i '/furo/d' pyproject.toml
-          
-          # Update lock file
-          # We add 'setuptools' because grapycal code uses pkg_resources
-          # We add 'furo' to the docs group
-          poetry add --lock furo setuptools --group docs --no-interaction
-          
-          # Upgrade pip and pre-install yarl to prevent compile hangs (same as workspace-ci)
-          poetry run pip install --upgrade pip setuptools wheel
-          poetry run pip install "yarl==1.22.0" --only-binary :all: -v
-          
-          # Install dependencies
-          # CHANGED: Use '--with docs' instead of '--only docs' to include MAIN dependencies.
-          # Sphinx needs main dependencies installed to import and inspect the package.
-          # Use --no-root and set PYTHONPATH to avoid "Installing current project" hangs.
-          poetry install --with docs --no-interaction --no-root -vv
-          
-          # Set PYTHONPATH so sphinx can find grapycal package source code
-          export PYTHONPATH=$PYTHONPATH:$(pwd)/src
-          
-          # Generate documentation
-          cd docs
-          poetry run make clean
-          poetry run make html
-        
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: backend/docs/build/html
-          force_orphan: true
-          cname: docs.grapycal.org
+        poetry add furo "setuptools<70.0.0"
+        poetry install
+    - name: Generate documentation
+      run: |
+        cd backend/docs
+        poetry run python extension_docgen/gen.py
+        poetry run make html
+        touch build/html/.nojekyll
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./backend/docs/build/html
