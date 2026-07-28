@@ -129,3 +129,4 @@ These tools or libraries help Grapycal a lot:
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Grapycal/Grapycal&type=Date" />
   </picture>
 </a>
+
